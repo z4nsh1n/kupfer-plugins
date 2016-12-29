@@ -42,7 +42,8 @@ class BalooSource(Source):
         filenames  = p.stdout.readlines()
         filenames = [i for i in filenames if i != "\n"]
         for file in filenames:
-            filename = self.ansi_escape.sub("", file).strip().split(" ", 1)[1]
+            #filename = self.ansi_escape.sub("", file).strip().split(" ", 1)[1]
+            filename = file.strip("\n")
             yield FileLeaf(filename)
 
     def repr_key(self):
